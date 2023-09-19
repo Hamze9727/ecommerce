@@ -12,11 +12,16 @@
                                  <div class="col-md-6">
                                      <h4>Products</h4>
                                  </div>
-                                 <div class="col-md-2">
+                                 <div class="col-md-1">
                                      <h4>Price</h4>
                                  </div>
-
-                                 <div class="col-md-4">
+                                 <div class="col-md-2">
+                                     <h4>Quantity</h4>
+                                 </div>
+                                 <div class="col-md-1">
+                                     <h4>Total</h4>
+                                 </div>
+                                 <div class="col-md-1">
                                      <h4>Remove</h4>
                                  </div>
                              </div>
@@ -48,21 +53,40 @@
                                                  </label>
                                              </a>
                                          </div>
-                                         <div class="col-md-2 my-auto">
+                                         <div class="col-md-1 my-auto">
                                              <label class="price">${{ $cartItem->product->salling_price }} </label>
                                          </div>
-
-                                         <div class="col-md-4 col-12 my-auto">
+                                         <div class="col-md-2 col-7 my-auto">
+                                             <div class="quantity">
+                                                 <div class="input-group">
+                                                     <button type="button" wire:loading.attr="disabled"
+                                                         wire:click="decrementQuantity({{ $cartItem->id }})"
+                                                         class="btn btn1"><i class="fa fa-minus"></i></button>
+                                                     <input type="text" value="{{ $cartItem->quantity }}"
+                                                         class="input-quantity" />
+                                                     <button type="button" wire:loading.attr="disabled"
+                                                         wire:click="incrementQuantity({{ $cartItem->id }})"
+                                                         class="btn btn1"><i class="fa fa-plus"></i></button>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-1 my-auto">
+                                             <label
+                                                 class="price">${{ $cartItem->product->salling_price * $cartItem->quantity }}
+                                             </label>
+                                             @php $TotalPrice += $cartItem->product->salling_price * $cartItem->quantity @endphp
+                                         </div>
+                                         <div class="col-md-2 col-5 my-auto">
                                              <div class="remove">
                                                  <button type="button"
-                                                     wire:click="removeWishlistItem({{ $cartItem->id }})"
+                                                     wire:click="removecartItem({{ $cartItem->id }})"
                                                      class="btn btn-danger btn-sm">
                                                      <span wire:loading.remove
-                                                         wire:target="removeWishlistItem({{ $cartItem->id }})">
+                                                         wire:target="removecartItem({{ $cartItem->id }})">
                                                          <i class="fa fa-trash"></i> Remove
                                                      </span>
                                                      <span wire:loading
-                                                         wire:target="removeWishlistItem({{ $cartItem->id }})">
+                                                         wire:target="removecartItem({{ $cartItem->id }})">
                                                          <i class="fa fa-trash"></i> Rimoving
                                                      </span>
                                                  </button>
@@ -77,7 +101,22 @@
                      </div>
                  </div>
              </div>
+             <div class="row">
+                 <div class="col-md-8 my-md-auto mt-3">
+                     <h5>get the best offers <a href="{{ url('/collections') }}">Shop now</a>
 
+                     </h5>
+                 </div>
+                 <div class="col-md-4 mt-3">
+                     <div class="shadow-sm bg-white p-3">
+                         <h4>total price:
+                             <span class="float-end">${{ $TotalPrice }}</span>
+                         </h4>
+                         <hr>
+                         <a href="{{ url('/ckeckOut') }}" class="btn btn-warning w-100">CheckOut</a>
+                     </div>
+                 </div>
+             </div>
          </div>
      </div>
 
