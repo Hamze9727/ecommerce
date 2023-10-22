@@ -1,8 +1,8 @@
  <nav class="sidebar sidebar-offcanvas" id="sidebar">
      <ul class="nav">
          <li class="nav-item">
-             <a class="nav-link" href="index.html">
-
+             <a class="nav-link" href="{{ url('admin/dashboard') }}">
+                 <i class="mdi mdi-speedometer menu-icon"></i>
                  <span class="menu-title">Dashboard</span>
              </a>
          </li>
@@ -22,11 +22,17 @@
                  </ul>
              </div>
          </li>
+         <li class="nav-item">
+             <a class="nav-link" href="{{ url('admin/orders') }}">
+                 <i class="mdi mdi-sale menu-icon"></i>
+                 <span class="menu-title">Order</span>
+             </a>
+         </li>
 
          <li class="nav-item">
              <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false"
                  aria-controls="category">
-                 <i class="mdi mdi-plus"></i>
+                 <i class="mdi mdi-view-list menu-icon"></i>
                  <span class="menu-title">category</span>
                  <i class="menu-arrow"></i>
              </a>
@@ -44,7 +50,7 @@
          </li>
          <li class="nav-item">
              <a class="nav-link" href="{{ url('admin/sliders') }}">
-                 <i class="mid mdi-view-carousel menu-icon"></i>
+                 <i class="mdi mdi-view-carousel menu-icon"></i>
                  <span class="menu-title">Home slider</span>
              </a>
          </li>
