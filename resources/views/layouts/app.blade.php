@@ -24,6 +24,12 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/costem.css') }}" rel="stylesheet">
+    <!--owl.carousel -->
+    <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet">
+    <!--exzoom for product image-->
+    <link href="{{ asset('assets/exzoom/jquery.exzoom.css') }}" rel="stylesheet">
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
@@ -52,7 +58,15 @@
             alertify.notify(event.detail.text, event.detail.type); /* + alertify.get('notifier', 'position') */
         });
     </script>
+    <!--owl.carousel js -->
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/exzoom/jquery.exzoom.js') }}"></script>
+    @yield('script')
+
+
+
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

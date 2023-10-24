@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\category;
+use App\Models\product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', '0')->get();
-        return view('frontend.index', compact('sliders'));
+        $traendingProduct = product::where('traending', '1')->latest()->take(15)->get();
+        return view('frontend.index', compact('sliders', 'traendingProduct'));
     }
     public function categories()
     {

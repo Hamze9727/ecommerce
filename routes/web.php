@@ -72,5 +72,8 @@ Route::prefix('admin')->middleware(['auth', 'isadmin'])->group(function () {
     Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {
         Route::get('/orders', 'index');
         Route::get('/orders/{orderId}', 'show');
+        Route::put('/orders/{orderId}', 'UpdateOrderStatus');
+        Route::get('/invoice/{orderId}', 'viewOrderinvoice');
+        Route::get('/invoice/{orderId}/generate', 'generateinvoice');
     });
 });

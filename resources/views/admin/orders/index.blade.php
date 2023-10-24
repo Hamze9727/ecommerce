@@ -79,7 +79,7 @@
                                             <td>{{ $item->status_message }}</td>
                                             <td><a href="{{ url('admin/orders/' . $item->id) }}"
                                                     class="btn btn-primary
-                                                    btn-sm">viewo</a>
+                                                    btn-sm">show</a>
                                             </td>
                                         </tr>
                                     @empty
@@ -97,6 +97,5 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     @endsection

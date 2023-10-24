@@ -7,15 +7,23 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            @if (session('message'))
+                <div class="alert alert-success mb-3">{{ session('message') }}</div>
+            @endif
             <div class="card">
                 <div class="card-header">
-                    <h3>My Order Details</h3>
+                    <h3>My Order Details </h3>
                 </div>
                 <div class="card-body">
                     <div class="shadow pg-white p-3">
                         <h4 class="text-primary">
                             <i class="fa fa-shopping-cart text-dark"></i> My Order Details
-                            <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end">Back</a>
+                            <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end mx-1">Back</a>
+                            <a href="{{ url('admin/invoice/' . $order->id . '/generate') }}"
+                                class="btn btn-warning btn-sm float-end mx-1">
+                                Download invoice </a>
+                            <a href="{{ url('admin/invoice/' . $order->id) }}" target="_blank"
+                                class="btn btn-info btn-sm float-end mx-1">view invoice </a>
                         </h4>
                         <hr>
                         <div class="row">
@@ -74,7 +82,7 @@
 
                                             </td>
                                             <td>
-                                                {{ $orderItem->product->name }}
+                                                {
                                                 @if ($orderItem->productColor)
                                                     @if ($orderItem->productColor->color)
                                                         <span>
@@ -98,6 +106,50 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border mt-3">
+                <div class="card-body">
+                    <h4>order process(order status update)</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form action="{{ url('admin/orders/' . $order->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <label>Update Order Status</label>
+                                <div class="input-group">
+                                    <select name="order_status" class="form-select">
+                                        <option value="">select order status</option>
+                                        <option
+                                            value="In progress"{{ Request::get('status') == 'In progress' ? 'selected' : '' }}>
+                                            In progress</option>
+                                        <option
+                                            value="completed"{{ Request::get('status') == 'completed' ? 'selected' : '' }}>
+                                            completed
+                                        </option>
+                                        <option value="pending"{{ Request::get('status') == 'pending' ? 'selected' : '' }}>
+                                            pending
+                                        </option>
+                                        <option
+                                            value="cancelled"{{ Request::get('status') == 'cancelled' ? 'selected' : '' }}>
+                                            cancelled
+                                        </option>
+                                        <option
+                                            value="out-for-delivery"{{ Request::get('status') == 'out-for-delivery' ? 'selected' : '' }}>
+                                            out for delivery
+                                        </option>
+                                    </select>
+                                    <button type="submit" class=" btn btn-primary taxt-white">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-7">
+                            <br />
+                            <h4 class="mt-3">Current order status: <span
+                                    class="text-uppercase">{{ $order->status_message }}</span></h4>
                         </div>
                     </div>
                 </div>
