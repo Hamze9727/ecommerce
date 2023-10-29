@@ -11,7 +11,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5 mt-3">
-                    <div class="bg-white border" wire:ignore {{-- class="bg-white border" --}}>
+                    <div class="bg-white border" wire:ignore>
                         @if ($product->ProductImage)
                             {{--   <img src="{{ asset($product->ProductImage[0]->image) }}" class="w-50" alt="Img"> --}}
                             <div class="exzoom" id="exzoom">

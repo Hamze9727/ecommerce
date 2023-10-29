@@ -125,7 +125,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">Funda Ecom</h5>
+                    <h5 class="brand-name">{{ $appsetting->Website_name ?? 'Website name' }}</h5>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form role="search">
@@ -223,10 +223,10 @@
                         <a class="nav-link" href="{{ url('/new-arrivals') }}">New Arrivals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Featured Products</a>
+                        <a class="nav-link" href="{{ url('/Featured') }}">Featured Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Electronics</a>
+                        <a class="nav-link" href="">Electronics</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Fashions</a>

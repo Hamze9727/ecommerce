@@ -8,11 +8,16 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Auth::routes();
-Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
-Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::class, 'categories']);
-Route::get('/collections/{category_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
 
-Route::get('/collections/{category_slug}/{products_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'viewproducts']);
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}',  'products');
+    Route::get('/collections/{category_slug}/{products_slug}', 'viewproducts');
+    Route::get('/new-arrivals', 'newArrivals');
+    Route::get('/Featured', 'FeaturedProducts');
+});
+
 
 Route::middleware(['auth',])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\Frontend\WishlistController::class, 'index']);
@@ -28,7 +33,14 @@ Route::get('thank-you', [App\Http\Controllers\Frontend\FrontendController::class
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth', 'isadmin'])->group(function () {
+    //dashboard
     Route::get('dashboard', [App\Http\Controllers\admin\DashboardController::class, 'index']);
+
+    //setting
+    Route::get('setting', [App\Http\Controllers\admin\SettingController::class, 'index']);
+    Route::post('setting', [App\Http\Controllers\admin\SettingController::class, 'store']);
+
+
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
         Route::get('/sliders', 'index');
         Route::get('/sliders/create', 'create');

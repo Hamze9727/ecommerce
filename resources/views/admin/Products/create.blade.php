@@ -129,6 +129,10 @@
                                             <input type="checkbox" name="traending">
                                         </div>
                                         <div class="md-3">
+                                            <label>Featured</label>
+                                            <input type="checkbox" name="Featured">
+                                        </div>
+                                        <div class="md-3">
                                             <label>status</label>
                                             <input type="checkbox" name="status">
                                         </div>

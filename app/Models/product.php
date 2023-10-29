@@ -21,6 +21,7 @@ class product extends Model
         'description',
         'quantity',
         'traending',
+        'Featured',
         'orginal_price',
         'salling_price',
         'status',

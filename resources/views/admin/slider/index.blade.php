@@ -45,7 +45,7 @@
                                     <td>{{ $slider->status == '1' ? 'hidden' : 'visable' }}</td>
                                     <td>
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
-                                            class="btn btn-sm btn-success">Edite</a>
+                                            class="btn btn-sm btn-success"> Edite</a>
 
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}"
                                             onclick="return confirm('Are you sure, you want to delete this date?')"

@@ -16,6 +16,17 @@ class FrontendController extends Controller
         $traendingProduct = product::where('traending', '1')->latest()->take(15)->get();
         return view('frontend.index', compact('sliders', 'traendingProduct'));
     }
+
+    function newArrivals()
+    {
+        $newArrivalsProduct = product::latest()->take(15)->get();
+        return view('frontend.pages.new-Arrivals', compact('newArrivalsProduct'));
+    }
+    function FeaturedProducts()
+    {
+        $featuredProducts = product::where('Featured', '1')->latest()->get();
+        return view('frontend.pages.featuredview', compact('featuredProducts'));
+    }
     public function categories()
     {
         $categories = category::where('status', '0')->get();

@@ -144,6 +144,11 @@
                                                 {{ $Product->traending == '1' ? 'checked' : '' }}>
                                         </div>
                                         <div class="md-3">
+                                            <label>Featured</label>
+                                            <input type="checkbox" name="Featured"
+                                                {{ $Product->Featured == '1' ? 'checked' : '' }}>
+                                        </div>
+                                        <div class="md-3">
                                             <label>status</label>
                                             <input type="checkbox" name="status"
                                                 {{ $Product->status == '1' ? 'checked' : '' }}>

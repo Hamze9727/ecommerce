@@ -23,8 +23,9 @@ return new class extends Migration
             $table->integer('orginal_price');
             $table->integer('salling_price');
             $table->integer('quantity');
-            $table->tinyInteger('traending');
-            $table->tinyInteger('status')->default('0')->comment('0=visible,1=hidden');
+            $table->tinyInteger('traending')->default('0')->comment('1=traending,0=not-traending');
+            $table->tinyInteger('Featured')->default('0')->comment('1=Featured,0=not-Featured');
+            $table->tinyInteger('status')->default('0')->comment('1=hidden,0=visible');
             $table->string('meta_title');
             $table->string('meta_keyword');
             $table->mediumText('meta_description');
